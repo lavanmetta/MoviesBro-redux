@@ -1,0 +1,22 @@
+
+
+.movie-list {
+    h1 {
+        color: rgb(210, 3, 3);
+        font-size: 3rem;
+    }
+}
+
+
+.movie-container {
+    display: grid;
+    grid-template-columns: repeat(5, 2fr);
+    justify-content: center;
+    justify-items: center;
+    gap: 10px
+}
+
+.movie-wrapper {
+    display: flex;
+    flex-direction: column;
+}
