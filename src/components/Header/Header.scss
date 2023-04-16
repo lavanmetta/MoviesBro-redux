@@ -1,36 +1,75 @@
 @import "../../common/colors.scss";
 
 .header {
-    background-color: $secondary-color;
-    height: 60px;
-    padding: 0px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
+  background-color: $secondary-color;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1300px;
 }
 
 .logo img {
-    width: 30px;
-    height: 30px;
-    margin: 10px;
+  width: 30px;
+  height: 30px;
+  margin: 10px;
 }
 
 .logo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .logo h2 {
   color: $font-primary;
 }
 a:link {
-    text-decoration: none!important;
+  text-decoration: none !important;
 }
 
 .user-image img {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
+  margin: 10px;
 }
 
+.user-image {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-container {
+  margin: 10px;
+  input {
+    height: 28px;
+    width: 300px;
+    padding-left: 28px;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid white;
+    color: $secondary-color;
+    font-weight: 500;
+    font-size: 0.9rem;
+    font-family: poppins, "sans-serif";
+  }
+  i {
+    color: $primary-color;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  button {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 20px;
+  }
+}
+
+
+@media screen and (min-width: px) {
+    
+}
