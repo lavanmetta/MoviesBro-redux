@@ -50,3 +50,30 @@
     -webkit-transform: none !important;
     transform: none !important;
   }
+
+
+  @media  (max-width: 600px) {
+    
+.movie-card {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 150px;
+    height: 270px;
+    border-radius: 10px;
+    background-color: rgb(0, 0, 0);
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+.poster img {
+    width: 150px;
+    height: 200px;
+    object-fit: fill;
+    border-radius: 10px;
+}
+.slick-slide > div {
+    margin: 0 10px;
+  }
+  .slick-list {
+    margin: 0 -50px;
+  }
+  }
