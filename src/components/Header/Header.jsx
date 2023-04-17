@@ -17,6 +17,7 @@ function Header() {
     if (term === "") return alert("Please enter search term");
     dispatch(fetchAsyncMovies(term));
     dispatch(fetchAsyncShows(term));
+    
     setTerm("");
   };
   return (

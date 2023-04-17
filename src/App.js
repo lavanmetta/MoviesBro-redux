@@ -6,6 +6,7 @@ import MovieDetails from "./components/MovieDetails/MovieDetails";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import Main from "./components/Home/Main";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Header />
         <div className="main-container">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Main/>} />
+            <Route path="/movies" element={<Home />} />
             <Route path="/movie/:imdbID" element={<MovieDetails />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>

@@ -1,9 +1,29 @@
-
+@import '../../common/colors.scss';
 
 .movie-list {
-    h1 {
-        color: rgb(210, 3, 3);
-        font-size: 3rem;
+    h2 {
+        color: $font-primary;
+        font-size: 2rem;
+    }
+}
+
+.links-of-ms {
+    display: flex;
+    flex-direction: row;
+    a {
+        margin: 8px;
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+        border-radius: 80px;
+        padding: 4px 20px 4px 20px;
+
+    }
+    a:hover {
+        background-color: $font-primary;
+        color: $primary-color;
+        font-weight: 500;
+        border: 1px solid white;
     }
 }
 
@@ -19,4 +39,5 @@
 .movie-wrapper {
     display: flex;
     flex-direction: column;
+    padding: 1.2rem;
 }

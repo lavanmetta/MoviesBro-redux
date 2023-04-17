@@ -38,10 +38,43 @@ export const fetchAsyncShows = createAsyncThunk(
     }
   );
 
+
+  export const fetchAsyncMarvelMovies = createAsyncThunk(
+    "movies/fetchMyAsyncMarvel",
+    
+    async (term) => {
+      
+      const response = await movieApi.get(
+        `?apiKey=${APIKey}&s=${term}&type=movie`
+      );
+      
+      return response.data
+      
+    } 
+    
+  );
+
+  
+
+  export const fetchAsyncMarvelShows = createAsyncThunk(
+    "movies/fetchMyAsyncMarvelShows",
+   
+    async (term) => {
+      
+      const response = await movieApi.get(
+        `?apiKey=${APIKey}&s=${term}&type=series`
+      );
+     
+      return response.data
+    }
+  );
+
 const initialState = {
   movies: {},
   shows: {},
   selectedMovieOrShow: {},
+  marvelUniverse: {},
+  marvelShows: {},
 };
 
 const movieSlice = createSlice({
@@ -72,6 +105,15 @@ const movieSlice = createSlice({
       console.log("Fetched Details");
       return {...state, selectedMovieOrShow : payload}
   },
+
+  [fetchAsyncMarvelMovies.fulfilled] : (state, {payload}) => {
+    console.log("Fetched Marvel");
+    return {...state, marvelUniverse: payload}
+},
+[fetchAsyncMarvelShows.fulfilled] : (state, {payload}) => {
+  console.log("Fetched Marvel shows");
+  return {...state, marvelShows: payload}
+},
   }
 });
 
@@ -79,5 +121,7 @@ export const { removeSelectedMovieOrShow } = movieSlice.actions;
 export const getAllMovies = (state) => state.movies.movies;
 export const getAllShows = (state) => state.movies.shows;
 export const getSelectedMovieOrShow = (state) => state.movies.selectedMovieOrShow;
+export const getMarvelUniverse = (state) => state.movies.marvelUniverse;
+export const getMarvelShows = (state) => state.movies.marvelShows;
 
 export default movieSlice.reducer;
