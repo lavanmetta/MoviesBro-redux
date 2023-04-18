@@ -99,7 +99,7 @@
     margin: 0 10px;
   }
   .slick-prev, .slick-next {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -111,6 +111,6 @@
     margin: 0 10px;
   }
   .slick-prev, .slick-next {
-    display: none;
+    display: none !important;
   }
 }
