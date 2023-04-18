@@ -12,8 +12,18 @@
 
 .footer p {
     color: $font-primary;
+    
 }
 
 .footer a {
-  color: blue;
+  color: rgb(0, 106, 255);
+}
+
+
+@media  screen and (max-width: 600px) {
+  .footer p {
+    color: $font-primary;
+    font-size: 10px;
+    padding: 10px;
+}
 }
