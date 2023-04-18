@@ -21,7 +21,8 @@ i {
 
 .img-container {
   margin: 10px;
-  width: 100%;
+  width: 30%;
+  height: 50%;
   background-color: black;
   border-radius: 10px;
   box-shadow: rgba(255, 255, 255, 0.211) 0px 48px 100px 0px;
@@ -34,6 +35,7 @@ i {
 
 .details-container {
     margin: 10px;
+    width: 60%;
 }
 
 .line-one {
@@ -87,6 +89,9 @@ i {
 
 }
 
+.tp {
+    padding: 10px;
+}
 
 @media screen and (max-width: 600px) {
     .details-main-container {
@@ -94,9 +99,14 @@ i {
         flex-direction: column;
         padding: 0.5rem;
         margin: 0;
- 
+      
         justify-content: center;
         align-items: center;
+    }
+
+    .details-container {
+        width: 100%;
+        padding: 2rem;
     }
 
     .img-container {
