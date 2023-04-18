@@ -31,11 +31,11 @@ function SamplePrevArrow(props) {
         backgroundColor: "transparent",
         fontSize: "30px",
         width: "0px",
-        left: "-40px"
+        left: "-40px",
       }}
       onClick={onClick}
     >
-      <div  style={{ position: "absolute" , zIndex:'999' }}>
+      <div style={{ position: "absolute", zIndex: "999" }}>
         <i
           className="ri-arrow-left-s-line"
           style={{ color: "white", fontSize: "4rem" }}
@@ -51,9 +51,9 @@ export const settings = {
   speed: 500,
   slidesToShow: 5,
   slidesToScroll: 2,
-  draggable: true,
-  swipe: true,
   touchMove: true,
+  centerMode: true,
+  className: "center",
   nextArrow: <SampleNextArrow />,
   prevArrow: <SamplePrevArrow />,
   responsive: [
@@ -63,23 +63,23 @@ export const settings = {
         slidesToShow: 3,
         slidesToScroll: 3,
         infinite: true,
-        dots: true
-      }
+        dots: true,
+      },
     },
     {
       breakpoint: 600,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
-        initialSlide: 2
-      }
+        initialSlide: 2,
+      },
     },
     {
       breakpoint: 480,
       settings: {
         slidesToShow: 2,
-        slidesToScroll: 1
-      }
-    }
-  ]
+        slidesToScroll: 1,
+      },
+    },
+  ],
 };
