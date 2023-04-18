@@ -41,3 +41,11 @@
     flex-direction: column;
     padding: 1.2rem;
 }
+
+
+
+@media screen and (max-width: 600px) {
+    .movie-wrapper {
+        padding: 0.2rem;
+    }
+}
