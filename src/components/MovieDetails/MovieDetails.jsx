@@ -7,6 +7,8 @@ import {
   removeSelectedMovieOrShow,
 } from "../../features/movies/movieSlice";
 import "./MovieDetails.scss";
+import { ThreeDots } from "react-loader-spinner";
+
 function MovieDetails() {
   const { imdbID } = useParams();
   const dispatch = useDispatch();
@@ -22,8 +24,17 @@ console.log(data.Ratings)
   return (
     <div>
       {Object.keys(data).length === 0 ? (
-        <div>
-          <h1>Loading....</h1>
+        <div className="loader">
+        <ThreeDots
+        height="80"
+        width="80"
+        radius="9"
+        color="#ffffff"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+      />
         </div>
       ) : (
         <div className="details-main-container">

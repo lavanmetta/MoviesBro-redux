@@ -43,6 +43,14 @@ i {
     
 }
 
+.loader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
 .one {
     display: flex;
     flex-direction: column;
