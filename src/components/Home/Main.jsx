@@ -8,7 +8,10 @@ import {
   fetchAsyncMarvelShows,
   getMarvelShows,
   getMarvelUniverse,
+  getIsLoading,
 } from "../../features/movies/movieSlice";
+import { ThreeDots } from "react-loader-spinner";
+
 import PopularCard from "../MovieCard/PopularCard";
 import { settings } from "../../common/Settings";
 import "./Home.scss";
@@ -23,6 +26,9 @@ function Main() {
 
   const marvelMovies = useSelector(getMarvelUniverse);
   const marvelShows = useSelector(getMarvelShows);
+  const isLoading = useSelector(getIsLoading);
+
+  
 
   let renderMarvelMovies = "",
     renderMarvelShows = "";
@@ -55,24 +61,42 @@ function Main() {
         <Link to="/movies">Movies</Link>
         <Link to="/shows">Shows</Link>
       </div>
-      <div className="movie-list">
-        <h2>
-          Marvel Cinematic Universe
-          <i className="ri-arrow-right-double-line"></i>
-        </h2>
-        <div className="Marvel-m">
-          <Slider {...settings}>{renderMarvelMovies}</Slider>
-        </div>
-      </div>
-      <div className="movie-list">
-        <h2>
-          Marvel Shows <i className="ri-arrow-right-double-line"></i>
-        </h2>
 
-        <div className="Marvel-m">
-          <Slider {...settings}>{renderMarvelShows}</Slider>
+      {isLoading ? (
+        <div className="loader">
+          <ThreeDots
+            height="80"
+            width="80"
+            radius="9"
+            color="#ffffff"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={true}
+          />
         </div>
-      </div>
+      ) : (
+        <>
+          <div className="movie-list">
+            <h2>
+              Marvel Cinematic Universe
+              <i className="ri-arrow-right-double-line"></i>
+            </h2>
+            <div className="Marvel-m">
+              <Slider {...settings}>{renderMarvelMovies}</Slider>
+            </div>
+          </div>
+          <div className="movie-list">
+            <h2>
+              Marvel Shows <i className="ri-arrow-right-double-line"></i>
+            </h2>
+
+            <div className="Marvel-m">
+              <Slider {...settings}>{renderMarvelShows}</Slider>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

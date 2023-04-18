@@ -6,68 +6,56 @@ export const fetchAsyncMovies = createAsyncThunk(
   "movies/fetchMyAsyncMovies",
 
   async (term) => {
-    
     const response = await movieApi.get(
       `?apiKey=${APIKey}&s=${term}&type=movie`
     );
-    return response.data
+    return response.data;
   }
 );
 
 export const fetchAsyncShows = createAsyncThunk(
-    "movies/fetchMyAsyncShows",
-  
-    async (term) => {
-      
-      const response = await movieApi.get(
-        `?apiKey=${APIKey}&s=${term}&type=series`
-      );
-      return response.data
-    }
-  );
+  "movies/fetchMyAsyncShows",
 
-  export const fetchAsyncMovieDetails = createAsyncThunk(
-    "movies/fetchMyAsyncMovieDetails",
-  
-    async (id) => {
-      
-      const response = await movieApi.get(
-        `?apiKey=${APIKey}&i=${id}&Plot=full`
-      );
-      return response.data
-    }
-  );
+  async (term) => {
+    const response = await movieApi.get(
+      `?apiKey=${APIKey}&s=${term}&type=series`
+    );
+    return response.data;
+  }
+);
 
+export const fetchAsyncMovieDetails = createAsyncThunk(
+  "movies/fetchMyAsyncMovieDetails",
 
-  export const fetchAsyncMarvelMovies = createAsyncThunk(
-    "movies/fetchMyAsyncMarvel",
-    
-    async (term) => {
-      
-      const response = await movieApi.get(
-        `?apiKey=${APIKey}&s=${term}&type=movie`
-      );
-      
-      return response.data
-      
-    } 
-    
-  );
+  async (id) => {
+    const response = await movieApi.get(`?apiKey=${APIKey}&i=${id}&Plot=full`);
+    return response.data;
+  }
+);
 
-  
+export const fetchAsyncMarvelMovies = createAsyncThunk(
+  "movies/fetchMyAsyncMarvel",
 
-  export const fetchAsyncMarvelShows = createAsyncThunk(
-    "movies/fetchMyAsyncMarvelShows",
-   
-    async (term) => {
-      
-      const response = await movieApi.get(
-        `?apiKey=${APIKey}&s=${term}&type=series`
-      );
-     
-      return response.data
-    }
-  );
+  async (term) => {
+    const response = await movieApi.get(
+      `?apiKey=${APIKey}&s=${term}&type=movie`
+    );
+
+    return response.data;
+  }
+);
+
+export const fetchAsyncMarvelShows = createAsyncThunk(
+  "movies/fetchMyAsyncMarvelShows",
+
+  async (term) => {
+    const response = await movieApi.get(
+      `?apiKey=${APIKey}&s=${term}&type=series`
+    );
+
+    return response.data;
+  }
+);
 
 const initialState = {
   movies: {},
@@ -75,6 +63,7 @@ const initialState = {
   selectedMovieOrShow: {},
   marvelUniverse: {},
   marvelShows: {},
+  isLoading: false,
 };
 
 const movieSlice = createSlice({
@@ -82,46 +71,51 @@ const movieSlice = createSlice({
   initialState,
   reducers: {
     removeSelectedMovieOrShow: (state) => {
-      state.selectedMovieOrShow = {}
-    }
+      state.selectedMovieOrShow = {};
+    },
   },
-  extraReducers: {
-    [fetchAsyncMovies.pending] : () => {
-        console.log("movies pending")
-    },
-    [fetchAsyncMovies.fulfilled] : (state, {payload}) => {
-        console.log("Fetched movies");
-        return {...state, movies: payload}
-    },
-    [fetchAsyncMovies.rejected] : () => {
-        console.log("rejected movies");
-        
-    },
-    [fetchAsyncShows.fulfilled] : (state, {payload}) => {
-        console.log("Fetched shows");
-        return {...state, shows: payload}
-    },
-    [fetchAsyncMovieDetails.fulfilled] : (state, {payload}) => {
-      console.log("Fetched Details");
-      return {...state, selectedMovieOrShow : payload}
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchAsyncMovies.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchAsyncMovies.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.movies = payload;
+      })
+      .addCase(fetchAsyncMovies.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(fetchAsyncShows.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.shows = payload;
+      })
+      .addCase(fetchAsyncMovieDetails.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.selectedMovieOrShow = payload;
+      })
+      .addCase(fetchAsyncMarvelMovies.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchAsyncMarvelMovies.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.marvelUniverse = payload;
+      })
+      .addCase(fetchAsyncMarvelShows.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.marvelShows = payload;
+      });
   },
-
-  [fetchAsyncMarvelMovies.fulfilled] : (state, {payload}) => {
-    console.log("Fetched Marvel");
-    return {...state, marvelUniverse: payload}
-},
-[fetchAsyncMarvelShows.fulfilled] : (state, {payload}) => {
-  console.log("Fetched Marvel shows");
-  return {...state, marvelShows: payload}
-},
-  }
+  
 });
 
 export const { removeSelectedMovieOrShow } = movieSlice.actions;
 export const getAllMovies = (state) => state.movies.movies;
 export const getAllShows = (state) => state.movies.shows;
-export const getSelectedMovieOrShow = (state) => state.movies.selectedMovieOrShow;
+export const getSelectedMovieOrShow = (state) =>
+  state.movies.selectedMovieOrShow;
 export const getMarvelUniverse = (state) => state.movies.marvelUniverse;
 export const getMarvelShows = (state) => state.movies.marvelShows;
+export const getIsLoading = (state) => state.movies.isLoading;
 
 export default movieSlice.reducer;
