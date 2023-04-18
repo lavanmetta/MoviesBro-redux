@@ -8,13 +8,13 @@ function SampleNextArrow(props) {
         display: "block",
         backgroundColor: "transparent",
         fontSize: "30px",
-        width: "40px",
+        width: "65px",
       }}
       onClick={onClick}
     >
       <i
         className="ri-arrow-right-s-line"
-        style={{ color: "white", fontSize: "4rem", fontWeight: "100" }}
+        style={{ color: "white", fontSize: "4rem", fontWeight: "100" , backgroundColor: 'rgba(0, 0, 0, 0.400)', borderRadius: "100%"}}
       ></i>
     </div>
   );
@@ -30,15 +30,15 @@ function SamplePrevArrow(props) {
         display: "block",
         backgroundColor: "transparent",
         fontSize: "30px",
-        width: "0px",
-        left: "-40px",
+        
+        
       }}
       onClick={onClick}
     >
       <div style={{ position: "absolute", zIndex: "999" }}>
         <i
           className="ri-arrow-left-s-line"
-          style={{ color: "white", fontSize: "4rem" }}
+          style={{ color: "white", fontSize: "4rem", backgroundColor: 'rgba(0, 0, 0, 0.400)', borderRadius: "100%" }}
         ></i>
       </div>
     </div>
